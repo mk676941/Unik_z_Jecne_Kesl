@@ -22,7 +22,7 @@ public class HelpCommand implements Command {
     @Override
     public boolean execute(String[] args) {
         System.out.println("----------------------------------------------------------------------------------------------------------------");
-        System.out.println("Aby jsi úspěšně unikl z Ječné, potřebuješ odemknout hlavní vchod pomocí:\n>>> Kartou hlavních dveří\n>>> Heslem hlavních dveří");
+        System.out.println("Aby jsi úspěšně unikl z Ječné, potřebuješ odemknout hlavní vchod pomocí:\n>>> Karty hlavních dveří\n>>> Hesla hlavních dveří");
         System.out.println();
         System.out.println("Některé místnosti jsou nepřístupné. Ke vstupu potřebuješ buď nějaký item, nebo pomoc některého z NPC.");
         System.out.println();

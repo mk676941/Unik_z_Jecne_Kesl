@@ -18,7 +18,7 @@ public class CreateWorld {
      *Vyplni zakladni svet
      */
     public void fillWorld () {
-        //rooms
+        //mistnosti
         world.addRoom(new Room("kmenovaucebna", "Kmenová učebna", "Výchozí místnost hráče"));
         world.addRoom(new Room("chodba", "Chodba", "Hlavní propojovací prostor"));
         world.addRoom(new Room("pocitacovaucebna", "Počítačová učebna", "beep-beep-beep"));
@@ -29,22 +29,22 @@ public class CreateWorld {
         world.addRoom(new Room("vratnice", "Vrátnice", "Školníkuv bejvák"));
         world.addRoom(new Room("hlavnivchod", "Hlavní vchod", "Úniková cesta"));
 
-        //items
+        //itemy
         world.addItem(new Item("pacidlo", "Páčidlo"));
         world.addItem(new Item("kyselina", "Kyselina sírová"));
-        world.addItem(new Item("klicodkabinetu", "Klíč od Kabinetu"));
+        world.addItem(new Item("klic", "Klíč od kabinetu"));
         world.addItem(new Item("karta", "Karta hlavních dveří"));
         world.addItem(new Item("kod", "3-číselný kód"));
         world.addItem(new Item("heslo", "Heslo hlavních dveří"));
 
-        //npcs
+        //npc
         world.addNPC(new NPC("studentnachodbe", "Student na chodbě", "Ahoj, jak ti mohu pomoci?"));
         world.addNPC(new NPC("studentvpocitacoveucebne", "Student v počítačové učebně", "Ahoj. Jestli chceš získat 3-číselný kód, budeš si ho muset zasloužit."));
         world.addNPC(new NPC("spravcedilny", "Správce dílny", "Konečně někdo odsunul tu skřín! Děkuji, chceš získat páčidlo?"));
         world.addNPC(new NPC("spravceserveroveucebny", "Správce serverové učebny", "Koukám že jsi zjistil kód. Zvládneš další úlohu pro získání hesla?"));
         world.addNPC(new NPC("skolnik","Školník", "Arghh... Jestli chceš klíč od kabinetu tak mi přines kyselinu z laborky"));
 
-        //quests
+        //questy
         world.addQest(new Quest("pcstudent", "Na monitoru svítí nápis: Pro přístup zadej správné slovo.\n" +
                 "Nápověda: Jsem začátek i konec abecedy. Bez mě bys nic nenapsal. Co jsem?\n" +
                 "Zadej odpověď jedním slovem.", "pismeno"));
@@ -55,27 +55,27 @@ public class CreateWorld {
                 "Otázka: Co je silnější: heslo 123456 nebo K0c0ur!2026?\n" +
                 "Napiš pouze: A pro první, nebo B pro druhé.", "b"));
 
-        //quest placement
+        //umisteni questu
         world.getNPC("studentvpocitacoveucebne").addQuest("pcstudent");
         world.getNPC("spravcedilny").addQuest("spravcedilny");
         world.getNPC("spravceserveroveucebny").addQuest("spravceserverovny");
 
-        //npc placement
+        //umisteni npc
         world.getRoom("chodba").addNpc("studentnachodbe");
         world.getRoom("pocitacovaucebna").addNpc("studentvpocitacoveucebne");
         world.getRoom("dilna").addNpc("spravcedilny");
         world.getRoom("serverovaucebna").addNpc("spravceserveroveucebny");
         world.getRoom("vratnice").addNpc("skolnik");
 
-        //items placement
+        //umisteni itemu
         world.getNPC("studentvpocitacoveucebne").addItem("kod");
         world.getRoom("laborka").addItem("kyselina");
         world.getNPC("spravcedilny").addItem("pacidlo");
         world.getRoom("kabinet").addItem("karta");
         world.getNPC("spravceserveroveucebny").addItem("heslo");
-        world.getNPC("skolnik").addItem("klicodkabinetu");
+        world.getNPC("skolnik").addItem("klic");
 
-        //exits
+        //exity
         world.getRoom("kmenovaucebna").addExit("J", "chodba");
         world.getRoom("pocitacovaucebna").addExit("JZ","chodba");
         world.getRoom("laborka").addExit("Z", "chodba");
@@ -94,14 +94,14 @@ public class CreateWorld {
         world.getRoom("chodba").addExit("JZ", "vratnice");
         world.getRoom("chodba").addExit("J", "hlavnivchod");
 
-        //help, rquired item
+        //help
         world.getNPC("studentnachodbe").setCanHelp(true);
         world.getNPC("skolnik").setRequiredItemId("kyselina");
 
-        //blocking
+        //blockovani
         world.getRoom("laborka").setBlocked(true, "pacidlo", false);
         world.getRoom("dilna").setBlocked(true, null, true);
-        world.getRoom("kabinet").setBlocked(true, "klicodkabinetu", false);
+        world.getRoom("kabinet").setBlocked(true, "klic", false);
         world.getRoom("serverovaucebna").setBlocked(true, "kod", false);
     }
 

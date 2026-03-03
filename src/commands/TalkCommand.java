@@ -35,6 +35,7 @@ public class TalkCommand implements Command {
         if (room.getNpcs().isEmpty()) {
             System.out.println("V místnosti: " + room.getName() + " není žádné NPC.");
         } else {
+            //interakce s npc
             String keyNPC = room.getNpcs().keySet().iterator().next();
 
             System.out.println(world.getNPC(keyNPC).getName() + ": " + world.getNPC(keyNPC).getDialogue());;
@@ -43,6 +44,7 @@ public class TalkCommand implements Command {
 
             boolean interaction = true;
 
+            //hlavni loop interakce
             while (interaction) {
                 System.out.println();
                 System.out.println("Menu: " + world.getNPC(keyNPC).getName());
@@ -56,6 +58,7 @@ public class TalkCommand implements Command {
                 String mainInput = sc.nextLine().toLowerCase();
                 System.out.println();
 
+                //vypsani inventare npc
                 switch (mainInput) {
                     case "1":
                         if (world.getNPC(keyNPC).getItems().isEmpty()) {
@@ -70,6 +73,7 @@ public class TalkCommand implements Command {
                             }
                         }
                         break;
+                    //quest, help
                     case "2":
                         if (world.getNPC(keyNPC).getCanHelp()) {
                             //help
@@ -80,9 +84,9 @@ public class TalkCommand implements Command {
                                 System.out.println("Už jsem skříň odsunul.");
                             }
                         } else {
-                            //reward
+                            //odmena
                             boolean canWork = true;
-                            if (player.isInventoryFull()) {
+                            if (player.isInventoryFull() && world.getNPC(keyNPC).getRequiredItemId() == null) {
                                 System.out.println("Nemůžeš získat odměnu. Nemáš místo v batohu.");
                                 canWork = false;
                             }
@@ -93,13 +97,14 @@ public class TalkCommand implements Command {
 
                             if (canWork) {
                                 if (world.getNPC(keyNPC).getRequiredItemId() != null) {
-                                    //required item
+                                    //pozadovani item
                                     if (!player.hasItem(world.getNPC(keyNPC).getRequiredItemId())) {
                                         System.out.print("Nemůžeš získat můj item. Nemáš v inventáři na výměnu: ");
                                         System.out.printf("item id: %-15s item name: %s%n",
                                                 world.getItem(world.getNPC(keyNPC).getRequiredItemId()),
                                                 world.getItem(world.getNPC(keyNPC).getRequiredItemId()).getName());
                                     } else {
+                                        //pridani odmeny
                                         String rewardId = world.getNPC(keyNPC).getItems().keySet().iterator().next();
                                         player.addItem(rewardId);
                                         player.removeItem(world.getNPC(keyNPC).getRequiredItemId());
@@ -109,7 +114,7 @@ public class TalkCommand implements Command {
                                 } else {
                                     //quest
                                     boolean working = true;
-
+                                    //quest menu
                                     while (working) {
                                         String questId = world.getNPC(keyNPC).getQuests().keySet().iterator().next();
                                         System.out.println("Úkol: " + world.getQuest(questId).getQuestText());
@@ -123,10 +128,12 @@ public class TalkCommand implements Command {
                                         System.out.println();
 
                                         switch (input) {
+                                            //odpoved na quest, pridani itemu
                                             case "1":
                                                 System.out.print("odpověď>");
                                                 String answer = sc.nextLine().toLowerCase();
                                                 if (answer.equals(world.getQuest(questId).getAnswer())) {
+                                                    System.out.println();
                                                     System.out.println("Správná odpověd!");
                                                     System.out.println("Odměna byla přidána do tvého batohu.");
                                                     String rewardId = world.getNPC(keyNPC).getItems().keySet().iterator().next();
@@ -138,6 +145,7 @@ public class TalkCommand implements Command {
                                                 }
                                                 break;
                                             case "2":
+                                                //exit quest
                                                 working = false;
                                                 break;
                                             default:
@@ -148,6 +156,7 @@ public class TalkCommand implements Command {
                             }
                         }
                         break;
+                    //exit
                     case "3":
                         interaction = false;
                         System.out.println("----------------------------------------------------------------------------------------------------------------");
@@ -160,4 +169,3 @@ public class TalkCommand implements Command {
         return true;
     }
 }
-//TODO dodelat komentare

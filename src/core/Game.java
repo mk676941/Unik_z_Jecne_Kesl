@@ -168,7 +168,7 @@ public class Game {
 
         Scanner sc = new Scanner(System.in);
 
-        //main loop
+        //hlavni loop
         while (running) {
             System.out.print("command id>");
             String input = sc.nextLine().toLowerCase();
@@ -189,8 +189,11 @@ public class Game {
         System.out.println("Konec hry.");
     }
 
-    //commands
+    //commandy
     public Map<String, Command> getCommands() {
         return commands;
+    }
+    public Command getCommand(String commandId) {
+        return commands.get(commandId);
     }
 }

@@ -7,6 +7,7 @@ public class MapCommand implements Command {
 
     private World world;
     private Player player;
+
     public MapCommand(World world, Player player) {
         this.world = world;
         this.player = player;
