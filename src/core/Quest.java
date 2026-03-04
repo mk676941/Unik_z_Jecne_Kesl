@@ -2,6 +2,10 @@ package core;
 
 import java.util.Map;
 
+/**
+ * Trida questu
+ * Obsahuje metody pro praci s vlastnistmi questu
+ */
 public class Quest {
     private String questId;
     private String questText;
@@ -28,7 +32,7 @@ public class Quest {
         return answer;
     }
 
-    //hints management (future addition)
+    //hinty (zatim nevyuzita)
     public void addHints (QuestState state, String hint) {
         hints.put(state, hint);
     }
@@ -36,7 +40,7 @@ public class Quest {
         return hints.get(state);
     }
 
-    //quest state management (future addition)
+    //quest state (zatim nevyuzita)
     public QuestState getState() {
         return state;
     }

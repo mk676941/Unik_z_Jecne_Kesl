@@ -3,6 +3,11 @@ package core;
 import java.util.HashMap;
 import java.util.Map;
 
+/**
+ * Trida hrace
+ * Obsahuje metody pro praci s vlastnistmi hrace
+ * Obsahuje metody pro praci s mapou inventare
+ */
 public class Player {
     private Map<String, String> inventory;
     private int capacity;
@@ -18,7 +23,7 @@ public class Player {
         this.hasWon = false;
     }
 
-    //items management
+    //itemy
     public boolean addItem(String item) {
         if (isInventoryFull()) {
             return false;
@@ -34,7 +39,7 @@ public class Player {
         return inventory.containsKey(itemId);
     }
 
-    //inventory
+    //inventar
     public boolean isInventoryFull(){
         return inventory.size() == capacity;
     }
@@ -45,7 +50,7 @@ public class Player {
         return capacity;
     }
 
-    //current room management
+    //aktualni mistnost
     public String getCurrentRoom() {
         return currentRoom;
     }
@@ -53,7 +58,7 @@ public class Player {
         this.currentRoom = currentRoom;
     }
 
-    //help management
+    //pomoc
     public boolean getHasHelp() {
         return hasHelp;
     }
@@ -61,7 +66,7 @@ public class Player {
         this.hasHelp = hasHelp;
     }
 
-    //win management
+    //vyhra
     public boolean getHasWon() {
         return hasWon;
     }

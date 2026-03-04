@@ -3,6 +3,11 @@ package core;
 import java.util.HashMap;
 import java.util.Map;
 
+/**
+ * Trida mistnosti
+ * Obsahuje metody pro praci s vlastnistmi mistnosti
+ * Obsahuje metody pro praci s mapami itemu, npc, exitu
+ */
 public class Room {
     private String id;
     private String name;
@@ -43,7 +48,7 @@ public class Room {
         return description;
     }
 
-    //exits management
+    //exity
     public void addExit(String direction, String room) {
         exits.put(direction, room);
     }
@@ -51,7 +56,7 @@ public class Room {
         return exits.get(direction);
     }
 
-    //exploring
+    //prozkoumavani
     public void explore() {
         this.explored = true;
     }
@@ -59,7 +64,7 @@ public class Room {
         return explored;
     }
 
-    //items management
+    //itemy
     public boolean addItem(String item) {
         items.put(item, item);
         return true;
@@ -79,7 +84,7 @@ public class Room {
         return items.get(itemId);
     }
 
-    //npcs management
+    //npc
     public boolean addNpc(String npc) {
         npcs.put(npc, npc);
         return true;
@@ -93,7 +98,7 @@ public class Room {
         } else return true;
     }
 
-    //blocking management
+    //blokovani
     public boolean isBlocked() {
         return blocked;
     }

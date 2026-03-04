@@ -1,5 +1,9 @@
 package core;
 
+/**
+ * Trida itemu
+ * Obsahuje metody pro praci s vlastnostmi itemu
+ */
 public class Item {
     private String id;
     private String name;

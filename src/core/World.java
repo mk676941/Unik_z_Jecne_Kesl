@@ -23,6 +23,9 @@ public class World {
     public Room getRoom(String id) {
         return rooms.get(id);
     }
+    public Map<String, Room> getRooms() {
+        return rooms;
+    }
 
     //items management
     public void addItem(Item item) {
@@ -42,6 +45,9 @@ public class World {
     public NPC getNPC(String id) {
         return npcs.get(id);
     }
+    public Map<String, NPC> getNpcs() {
+        return npcs;
+    }
 
     //quests management
     public void addQest (Quest quest) {
@@ -49,5 +55,8 @@ public class World {
     }
     public Quest getQuest (String id) {
         return quests.get(id);
+    }
+    public Map<String, Quest> getQuests() {
+        return quests;
     }
 }

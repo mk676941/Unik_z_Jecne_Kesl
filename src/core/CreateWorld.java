@@ -9,6 +9,11 @@ import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 
+/**
+ * Trida pro vytvareni sveta
+ * Obsahuje metody pro praci s json souborem
+ * Obsahuje metodu pro zakladni naplneni sveta
+ */
 public class CreateWorld {
     private World world;
 
@@ -96,11 +101,11 @@ public class CreateWorld {
         world.getRoom("chodba").addExit("JZ", "vratnice");
         world.getRoom("chodba").addExit("J", "hlavnivchod");
 
-        //help
+        //pomoc
         world.getNPC("studentnachodbe").setCanHelp(true);
         world.getNPC("skolnik").setRequiredItemId("kyselina");
 
-        //blockovani
+        //blokovani
         world.getRoom("laborka").setBlocked(true, "pacidlo", false);
         world.getRoom("dilna").setBlocked(true, null, true);
         world.getRoom("kabinet").setBlocked(true, "klic", false);
@@ -123,16 +128,18 @@ public class CreateWorld {
     }
 
     /**
-    * Nacte svet z json souboru
-    */
-    public void loadWorld(String resourcePath) {
+     * Nacte data sveta z json souboru
+     * @param resourcePath - zadany nazev json souboru
+     * @return vyplneny world
+     */
+    public World loadWorld(String resourcePath) {
         Gson gson = new Gson();
         try (InputStream is = getClass().getResourceAsStream(resourcePath)) {
             if (is == null) {
                 throw new IllegalStateException("Nenalezen resource: " + resourcePath +
                         " - Zkontrolujte, že soubor je v resources a před cestou je /.");
             }
-            world = gson.fromJson(new InputStreamReader(is, StandardCharsets.UTF_8), World.class);
+            return world = gson.fromJson(new InputStreamReader(is, StandardCharsets.UTF_8), World.class);
         } catch (Exception e) {
             throw new RuntimeException("Chyba při načítání JSON: " + e.getMessage());
         }

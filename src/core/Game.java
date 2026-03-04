@@ -5,6 +5,14 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Scanner;
 
+/**
+ * Trida s main loopem
+ * Vytvori se zde instance trid Player, World, CreateWorld
+ * Naplni se zde mapa commandu a world
+ * Obsahuje metodu pro vytvoreni commandu
+ * Obsahuje metodu pro obstaravani vstupu uzivatele
+ * Obsahuje metodu pro vypis pri ukonceni kry
+ */
 public class Game {
     private Map<String, Command> commands;
     private Player player;
@@ -16,9 +24,8 @@ public class Game {
         this.player = new Player(3);
         this.world = new World();
         this.createWorld = new CreateWorld(world);
-        //createWorld.fillWorld();
         //createWorld.saveWorld();
-        createWorld.loadWorld("/world.json");
+        world = createWorld.loadWorld("/world.json");
         registerCommands();
     }
 
@@ -42,7 +49,7 @@ public class Game {
      * @param key - vstup hrace
      * @return boolean
      */
-    public boolean StartCommand(String key) {
+    public boolean startCommand(String key) {
         String[] parts = key.split("\\s+");
 
         Command command = commands.get(parts[0]);
@@ -173,7 +180,7 @@ public class Game {
         while (running) {
             System.out.print("command id>");
             String input = sc.nextLine().toLowerCase();
-            running = StartCommand(input);
+            running = startCommand(input);
         }
         endGame();
     }
@@ -196,5 +203,9 @@ public class Game {
     }
     public Command getCommand(String commandId) {
         return commands.get(commandId);
+    }
+
+    public CreateWorld getCreateWorld() {
+        return createWorld;
     }
 }

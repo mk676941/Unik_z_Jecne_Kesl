@@ -3,6 +3,11 @@ package core;
 import java.util.HashMap;
 import java.util.Map;
 
+/**
+ * Trida npc
+ * Obsahuje metody pro praci s vlastnistmi npc
+ * Obsahuje metody pro praci s mapami itemu a questu
+ */
 public class NPC {
     private String id;
     private String name;
@@ -37,7 +42,7 @@ public class NPC {
         return name;
     }
 
-    //quests management
+    //questy
     public boolean addQuest(String quest) {
         quests.put(quest, quest);
         return true;
@@ -46,7 +51,7 @@ public class NPC {
         return quests;
     }
 
-    //required item management
+    //required item
     public String getRequiredItemId() {
         return requiredItemId;
     }
@@ -54,7 +59,7 @@ public class NPC {
         this.requiredItemId = requiredItemId;
     }
 
-    //help management
+    //pomoc
     public boolean getCanHelp() {
         return canHelp;
     }
@@ -62,7 +67,7 @@ public class NPC {
         this.canHelp = canHelp;
     }
 
-    //items management
+    //itemy
     public boolean addItem(String item) {
         items.put(item, item);
         return true;
