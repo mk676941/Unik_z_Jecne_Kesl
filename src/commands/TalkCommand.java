@@ -5,7 +5,7 @@ import java.util.Scanner;
 
 /**
  * Command pro interakci s NPC.
- * Obsahuje execute pro interakci a plneni ukolu NPC.
+ * Obsahuje execute pro interakci a plneni questu NPC.
  * @author Matej Kesl
  */
 public class TalkCommand implements Command {
