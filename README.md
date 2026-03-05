@@ -6,10 +6,10 @@ Hrajete jako student, který zůstal déle ve škole, aby dokončil projekt.
 Vaším cílem je uniknout ze školy hlavním vchodem.
 
 ## Herní mechaniky
-- Prozkoumávání různých místností
-- Interakce s NPC
-- Plnění úkolů
-- Sbírání a používání předmětů
+- Prozkoumávání různých místností  
+- Interakce s NPC  
+- Plnění úkolů  
+- Sbírání a používání předmětů  
 - Odemknutí hlavního vchodu pomocí karty a hesla
 
 ## Ovládání hry (Commandy)
@@ -45,3 +45,4 @@ Každý předmět má své **ID** a název:
 - Umístěte vlastní JSON do složky `resources` a ve třídě `Game` upravte vstupní parametr metody:
   ```java
   loadWorld("/nazevvlastniho.json");
+![alt text](https://github.com/mk676941/Kesl---Game/blob/master/resourcepath.png)
