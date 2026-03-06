@@ -41,8 +41,9 @@ Každý předmět má své **ID** a název:
 
 ## Jak spustit JAR soubor hry
 Ke spuštění hry potřebujete mít nainstalovanou Java verzi 25.0.2.
-1. Otevřete příkazový řádek.
-2. Hru spusťte pomocí příkazu:
+1. Stáhněte si JAR soubor hry
+2. Otevřete příkazový řádek
+3. Hru spusťte pomocí příkazu:
 
 ```bash
 java -jar Kesl-JecnaGame.jar
